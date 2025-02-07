@@ -1,6 +1,7 @@
 import pg from "pg";
 import Link from "next/link";
 import db from "@/utils/db";
+import DeleteButton from "@/app/Components/Delete";
 
 export default async function PostsPage({ searchParams }) {
   const sort = searchParams;
@@ -34,6 +35,8 @@ export default async function PostsPage({ searchParams }) {
               ? new Date(post.created_at).toLocaleString()
               : "No Date Available"}
           </p>
+
+          <DeleteButton id={post.id} />
         </div>
       ))}
     </>

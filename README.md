@@ -4,3 +4,4 @@
 3)Moved the db out from the component posts
 4)Made A dunamic route for the posts
 5)Added Header and a nav bar
+6)Created a newpost function. Now we can add the posts directly to the db

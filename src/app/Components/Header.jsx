@@ -9,7 +9,7 @@ export default function Header() {
         <Link href={"/"}>Home</Link>
 
         <Link href={"/posts"}>Posts</Link>
-        <Link href={"/posts/new"}>New Posts</Link>
+        <Link href={"/new_post"}>New Posts</Link>
       </nav>
     </>
   );

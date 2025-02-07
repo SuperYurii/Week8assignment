@@ -29,6 +29,11 @@ export default async function PostsPage({ searchParams }) {
         <div key={post.id}>
           <h2>{post.title}</h2>
           <p>{post.content}</p>
+          <p>
+            {post.created_at
+              ? new Date(post.created_at).toLocaleString()
+              : "No Date Available"}
+          </p>
         </div>
       ))}
     </>

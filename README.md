@@ -5,3 +5,4 @@
 4)Made A dunamic route for the posts
 5)Added Header and a nav bar
 6)Created a newpost function. Now we can add the posts directly to the db
+7)Spent an hour adding a time stamp to my posts. It appeared that if you add the column to existing table it does not work properly. Droped the table and created the new one

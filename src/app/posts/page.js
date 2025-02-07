@@ -1,22 +1,36 @@
 import pg from "pg";
+import Link from "next/link";
+import db from "@/utils/db";
 
-export default async function PostsPage() {
-  const db = new pg.Pool({
-    connectionString: process.env.NEXT_POSTGRES,
-  });
+export default async function PostsPage({ searchParams }) {
+  const sort = searchParams;
 
-  const posts = (await db.query(`SELECT * FROM posts`)).rows;
+  const result = await db.query(`SELECT * FROM posts`);
+  let posts = result.rows;
+  console.log(posts);
+  //We awant to sort trhe posts(ASC-DESC)
+  if (sort === "desc") {
+    posts.sort((a, b) => b.title.localeCompare(a.title)); // Descending order
+  } else if (sort === "asc") {
+    posts.sort((a, b) => a.title.localeCompare(b.title)); // ascending order
+  }
 
   console.log(posts);
-
+  //===============================================
   return (
-    <div>
-      <h1>Posts</h1>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id}>{post.title}</li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <h1>The Greatest Posts of All Time</h1>
+
+      <Link href={`/posts?sort=asc`}>A-Z</Link>
+      <Link href={`/posts?sort=desc`}>Z-A</Link>
+
+      {/* with this part I asked some help from chat gpt. It told me how to sort it out with map and key */}
+      {posts.map((post) => (
+        <div key={post.id}>
+          <h2>{post.title}</h2>
+          <p>{post.content}</p>
+        </div>
+      ))}
+    </>
   );
 }

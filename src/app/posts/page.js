@@ -17,28 +17,43 @@ export default async function PostsPage({ searchParams }) {
   }
 
   console.log(posts);
-  //===============================================
+  //========================================
+  //Took the Idea from the web ite that I use and used it here.
   return (
-    <>
-      <h1>The Greatest Posts of All Time</h1>
+    <div className="min-h-screen bg-amber-100 flex flex-col items-center py-10 px-4">
+      <h1 className="text-3xl font-bold text-gray-900 mb-6">
+        Great sayings from the smartest beings on the planet.
+      </h1>
 
-      <Link href={`/posts?sort=asc`}>A-Z</Link>
-      <Link href={`/posts?sort=desc`}>Z-A</Link>
+      <div className="w-full max-w-2xl bg-white shadow-md rounded-lg p-6">
+        {posts.length > 0 ? (
+          <ul className="space-y-4">
+            {posts.map((post) => (
+              <li
+                key={post.id}
+                className="p-4 bg-gray-200 hover:bg-gray-300 transition rounded-lg shadow-sm"
+              >
+                <h2 className="text-xl font-semibold text-gray-900">
+                  {post.title}
+                </h2>
+                <p className="text-gray-700">{post.content}</p>
+                <p className="text-gray-500 text-sm">
+                  {post.created_at
+                    ? new Date(post.created_at).toLocaleString()
+                    : "No Date Available"}
+                </p>
 
-      {/* with this part I asked some help from chat gpt. It told me how to sort it out with map and key */}
-      {posts.map((post) => (
-        <div key={post.id}>
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-          <p>
-            {post.created_at
-              ? new Date(post.created_at).toLocaleString()
-              : "No Date Available"}
-          </p>
-
-          <DeleteButton id={post.id} />
-        </div>
-      ))}
-    </>
+                {/* Delete Button */}
+                <div className="mt-2">
+                  <DeleteButton id={post.id} />
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-600 text-center">No posts available.</p>
+        )}
+      </div>
+    </div>
   );
 }

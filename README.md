@@ -8,3 +8,4 @@
 7)Spent an hour adding a time stamp to my posts. It appeared that if you add the column to existing table it does not work properly. Droped the table and created the new one
 8)Implemented Delete Button with a help of other students in breakroom, lesson demo and a lot of googling
 9)Added an Img on homescreen and did some styling with tailwind
+10)I used Tailwind on the posts page because I couldn't solve the styling issue any other way. Took an idea from one of the websites I use and used it here.

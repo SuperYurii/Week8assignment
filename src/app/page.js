@@ -23,7 +23,6 @@ export default function Homepage() {
           src={placetobe}
           alt="Calm place"
           width={500}
-          height={300}
           className="rounded-lg object-cover"
           priority
           placeholder="blur"

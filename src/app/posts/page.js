@@ -2,6 +2,11 @@ import pg from "pg";
 import Link from "next/link";
 import db from "@/utils/db";
 import DeleteButton from "@/app/Components/Delete";
+export const metadata = {
+  title: "All Posts ",
+  description: "Browse through all the latest posts shared by users.",
+  keywords: "posts, latest posts, great sayings,content",
+};
 
 export default async function PostsPage({ searchParams }) {
   const sort = searchParams;

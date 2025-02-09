@@ -9,3 +9,4 @@
 8)Implemented Delete Button with a help of other students in breakroom, lesson demo and a lot of googling
 9)Added an Img on homescreen and did some styling with tailwind
 10)I used Tailwind on the posts page because I couldn't solve the styling issue any other way. Took an idea from one of the websites I use and used it here.
+11)Added metadata to the pages

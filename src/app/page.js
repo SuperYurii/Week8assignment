@@ -1,5 +1,10 @@
 import Image from "next/image";
 import placetobe from "@/app/public/assets/placetobe.webp";
+export const metadata = {
+  title: "HomePage ",
+  description: "Browse through all the functions of our website.",
+  keywords: "homepage,posts, latest posts, great sayings,content",
+};
 
 export default function Homepage() {
   return (

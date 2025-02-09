@@ -1,6 +1,11 @@
 import db from "@/utils/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+export const metadata = {
+  title: "The page to create a new posts ",
+  description: "User can read,add and delete posts",
+  keywords: "posts, latest posts, great sayings,content, add,delete",
+};
 
 export default function NewPostPage() {
   //function to handle submit --> onSubmit listener (event)
@@ -33,35 +38,49 @@ export default function NewPostPage() {
   }
 
   return (
-    <>
-      <h1>Add a new post to the app</h1>
-      {/* we are going to add a form in here, same as usual */}
-      {/* remember to add some validation to make sure your data is as precise as possible! */}
-      <form action={handleSubmit}>
-        <label htmlFor="title">Title: </label>
-        {/* the name attribute gives an identifier to the input, so I can target each input specifically */}
-        {/* it is recommended that the name attribute value matches the table column where the data will be stored */}
-        <input
-          type="text"
-          name="title"
-          id="title"
-          className="text-emerald-600"
-        />
-        <label htmlFor="Content">Content: </label>
-        <input
-          type="text"
-          name="content"
-          id="content"
-          className="text-emerald-600"
-        />
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 px-4">
+      <h1 className="text-3xl font-bold text-gray-900 mb-6">Add a New Post</h1>
 
-        <button
-          type="submit"
-          className="border-amber-600 border-4 m-4 hover:bg-sky-700"
-        >
-          Submit your post
-        </button>
-      </form>
-    </>
+      {/* Form Container */}
+      <div className="w-full max-w-2xl bg-white shadow-md rounded-lg p-6">
+        <form action={handleSubmit} className="flex flex-col space-y-4">
+          <div>
+            <label htmlFor="title" className="block text-gray-700 font-medium">
+              Title:
+            </label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="content"
+              className="block text-gray-700 font-medium"
+            >
+              Content:
+            </label>
+            <textarea
+              name="content"
+              id="content"
+              rows="5"
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition"
+          >
+            Submit Your Post
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
